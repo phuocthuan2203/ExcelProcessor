@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Excel Upload";
+}
+
+<h2>Upload Excel File</h2>
+
+@if (!string.IsNullOrEmpty(Context.Request.Query["error"]))
+{
+    <div class="alert alert-danger">
+        @Context.Request.Query["error"]
+    </div>
+}
+
+<form asp-action="Upload" enctype="multipart/form-data" method="post">
+    <div class="form-group">
+        <input type="file" name="file" class="form-control-file" />
+    </div>
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>

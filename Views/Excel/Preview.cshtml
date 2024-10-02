@@ -1,0 +1,33 @@
+﻿@model List<ExcelProcessor.Models.ExcelData>
+
+<h2>Excel Preview</h2>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>First Num</th>
+                <th>Second Num</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Where(x => x.FirstNum != 0 || x.SecondNum != 0 || x.Result != 0))
+            {
+                <tr>
+                    <td>@item.FirstNum</td>
+                    <td>@item.SecondNum</td>
+                    <td>@item.Result</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No data available.</p>
+}
+
+<a asp-action="Download" class="btn btn-primary">Download Excel</a>
+<a asp-action="Calculate" class="btn btn-secondary">Enter More Numbers</a>
